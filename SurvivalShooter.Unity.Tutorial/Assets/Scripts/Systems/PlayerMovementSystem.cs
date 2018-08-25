@@ -19,7 +19,7 @@ public class PlayerMovementSystem : ComponentSystem
         int speed = SurvivalShooterGame.survivalShooterSettings.playerMovementSpeed;
         for (int i = 0; i < data.Length; ++i)
         {
-            Vector3 position = data.rigidbodys[i].transform.localPosition;
+            Vector3 position = data.rigidbodys[i].transform.position;
             
             Vector3 move = data.playerInputs[i].Move;
 

@@ -11,7 +11,7 @@ public class PlayerTurningSystem : ComponentSystem
     }
 
     [Inject] private Data data;
-    bool isFirstFrame = true;
+
     protected override void OnUpdate()
     {
         Vector3 mousePosition = Input.mousePosition;
@@ -24,7 +24,7 @@ public class PlayerTurningSystem : ComponentSystem
             RaycastHit raycastHit;
             if (Physics.Raycast(camRay, out raycastHit, raycastLength, groundLayer))
             {
-                Vector3 position = data.rigidbodys[i].transform.localPosition;
+                Vector3 position = data.rigidbodys[i].transform.position;
 
                 Vector3 playerToMouse = raycastHit.point - position;
 
