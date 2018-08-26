@@ -63,6 +63,7 @@ public class PlayerShootingSystem : ComponentSystem
         {
             GameObjectEntity objectEntity = shootHit.collider.gameObject.GetComponent<GameObjectEntity>();
             Debug.Log("Hit: " + shootHit.collider.gameObject.name);
+            GameUI.Instance.OnKillEnemy();
             if(objectEntity)
             {
             }

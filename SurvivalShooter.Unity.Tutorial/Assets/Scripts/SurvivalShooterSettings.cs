@@ -13,4 +13,6 @@ public class SurvivalShooterSettings : MonoBehaviour {
     public float shootEffectDisplayTime;
     [Header("Camera")]
     public int cameraSpeed;
+    [Space(10)]
+    public int scoreKillEnemy;
 }
