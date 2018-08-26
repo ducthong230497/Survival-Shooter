@@ -5692,7 +5692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb465afbd61152c4ca3951e67e693db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 0
+  startingHealth: 50
   playerMovementSpeed: 5
   raycastLength: 100
   shootRange: 100
@@ -5929,6 +5929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2110304711}
+  healthSlider: {fileID: 899073235}
 --- !u!1 &1407332324
 GameObject:
   m_ObjectHideFlags: 0
