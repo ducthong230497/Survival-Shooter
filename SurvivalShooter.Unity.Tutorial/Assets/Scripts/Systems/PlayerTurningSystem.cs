@@ -15,7 +15,7 @@ public class PlayerTurningSystem : ComponentSystem
     protected override void OnUpdate()
     {
         Vector3 mousePosition = Input.mousePosition;
-        LayerMask groundLayer = LayerMask.GetMask("Ground");
+        LayerMask groundLayer = LayerMask.GetMask(GameString.groundLayer);
         int raycastLength = SurvivalShooterGame.survivalShooterSettings.raycastLength;
         float dt = Time.deltaTime;
         for (int i = 0; i < data.Length; ++i)

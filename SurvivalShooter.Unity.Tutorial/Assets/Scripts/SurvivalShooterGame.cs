@@ -9,10 +9,16 @@ public sealed class SurvivalShooterGame {
     {
         EntityManager entityManager = World.Active.GetOrCreateManager<EntityManager>();
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag(GameString.player);
         Entity entity = player.GetComponent<GameObjectEntity>().Entity;
         entityManager.AddComponentData(entity, new PlayerInput() { Move = new Vector3(0, 0, 0) });
-        entityManager.AddComponentData(entity, new Health() { health = survivalShooterSettings.startingHealth });
+        entityManager.AddComponentData(entity, new Health() { value = survivalShooterSettings.playerStartHealth });
+
+        #region TEST ENEMY
+        GameObject enemy = GameObject.Find("TestEnemy");
+        Entity enemyEntity = enemy.GetComponent<GameObjectEntity>().Entity;
+        entityManager.AddComponentData(enemyEntity, new Health() { value = survivalShooterSettings.enemyStartHealth });
+        #endregion
 
         mainCamera = Camera.main;
     }

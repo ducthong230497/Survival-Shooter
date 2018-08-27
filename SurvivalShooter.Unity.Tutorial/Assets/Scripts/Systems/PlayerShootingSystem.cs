@@ -25,7 +25,7 @@ public class PlayerShootingSystem : ComponentSystem
         float shootEffectDisplayTime = SurvivalShooterGame.survivalShooterSettings.shootEffectDisplayTime;
 
         timer += Time.deltaTime;
-        layerMask = LayerMask.GetMask("Enviroment");
+        layerMask = LayerMask.GetMask(GameString.enviromentLayer);
         for (int i = 0; i < data.Length; ++i)
         {
             if(Input.GetButton("Fire1") && timer >= shootCoolDown)

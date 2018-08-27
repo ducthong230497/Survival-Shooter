@@ -26,7 +26,7 @@ public class GameUI : MonoBehaviour {
         }
 
         scorePerKill = SurvivalShooterGame.survivalShooterSettings.scoreKillEnemy;
-        playerStartHealth = SurvivalShooterGame.survivalShooterSettings.startingHealth;
+        playerStartHealth = SurvivalShooterGame.survivalShooterSettings.playerStartHealth;
     }
 
     public void OnKillEnemy()
@@ -42,15 +42,17 @@ public class GameUI : MonoBehaviour {
 
     private IEnumerator UpdatePlayerHealth(int newHealth)
     {
-        float healthPercent = (float)newHealth / (float)playerStartHealth;
+        Debug.Log($"new health: {newHealth}");
+        float newHealthPercent = (float)newHealth / (float)playerStartHealth;
+        float currentHealthPercent = healthSlider.value;
         float timer = 0;
         while(timer < 0.5f)
         {
             timer += Time.deltaTime;
-            healthSlider.value = Mathf.Lerp(healthPercent, 1, timer / 0.5f);
+            healthSlider.value = Mathf.Lerp(currentHealthPercent, newHealthPercent, timer / 0.5f);
             yield return null;
         }
 
-        healthSlider.value = healthPercent;
+        healthSlider.value = newHealthPercent;
     }
 }
