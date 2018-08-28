@@ -18,4 +18,5 @@ public class SurvivalShooterSettings : MonoBehaviour {
     public int enemyDamage;
     public int scoreKillEnemy;
     public float enemyAttackCoolDown;
+    public float enemySinkSpeed;
 }

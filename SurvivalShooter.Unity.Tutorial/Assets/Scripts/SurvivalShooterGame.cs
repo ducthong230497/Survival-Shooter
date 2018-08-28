@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using System;
+using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -17,10 +18,34 @@ public sealed class SurvivalShooterGame {
         #region TEST ENEMY
         GameObject enemy = GameObject.Find("TestEnemy");
         Entity enemyEntity = enemy.GetComponent<GameObjectEntity>().Entity;
+        entityManager.AddComponentData(enemyEntity, new Enemy());
         entityManager.AddComponentData(enemyEntity, new Health() { value = survivalShooterSettings.enemyStartHealth });
-        #endregion
 
         mainCamera = Camera.main;
+
+        GameObject zombearEnemy = GameObject.Find("Zombear");
+        if(zombearEnemy == null)
+        {
+            Debug.Log("Zombear is null");
+            return;
+        }
+        else
+        {
+            Debug.Log("Zombear is not null");
+            Entity zombearEntity = zombearEnemy.GetComponent<GameObjectEntity>().Entity;
+            if (zombearEntity == null)
+            {
+                Debug.Log("Zombear Entity is null");
+            }
+            else
+            {
+                Debug.Log("Zombear Entity is not null");
+                entityManager.AddComponentData(zombearEntity, new Enemy());
+                entityManager.AddComponentData(zombearEntity, new Health() { value = survivalShooterSettings.enemyStartHealth });
+            }
+        }
+        #endregion
+
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]

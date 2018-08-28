@@ -13,6 +13,7 @@ public class PlayerShootingSystem : ComponentSystem
         public ComponentArray<LineRenderer> lineRenderers;
         public ComponentArray<AudioSource> audioSources;
         public ComponentArray<Light> lights;
+        private SubtractiveComponent<Dead> deads;
     }
 
     [Inject] private Data data;

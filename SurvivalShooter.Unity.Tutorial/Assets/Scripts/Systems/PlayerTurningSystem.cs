@@ -8,6 +8,7 @@ public class PlayerTurningSystem : ComponentSystem
         public readonly int Length;
         public ComponentArray<Rigidbody> rigidbodys;
         public ComponentDataArray<PlayerInput> players;
+        private SubtractiveComponent<Dead> deads;
     }
 
     [Inject] private Data data;

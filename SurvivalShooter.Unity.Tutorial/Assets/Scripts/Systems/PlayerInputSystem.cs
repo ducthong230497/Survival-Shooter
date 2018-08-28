@@ -8,6 +8,7 @@ public class PlayerInputSystem : ComponentSystem
     {
         public readonly int Length;
         public ComponentDataArray<PlayerInput> playerInputs;
+        public SubtractiveComponent<Dead> deads;
     }
 
     [Inject] private Data data;
