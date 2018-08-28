@@ -25,7 +25,6 @@ public class EnemyAttackSystem : ComponentSystem {
 
     protected override void OnUpdate()
     {
-        EntityManager entityManager = World.Active.GetExistingManager<EntityManager>();
         EntityCommandBuffer entityCommandBuffer = PostUpdateCommands;
 
         int enemyDamage = SurvivalShooterGame.survivalShooterSettings.enemyDamage;
@@ -39,7 +38,7 @@ public class EnemyAttackSystem : ComponentSystem {
             if(data.enemyAttackers[i].timer >= enemyAttackCoolDown && data.enemyAttackers[i].playerInRange && data.healths[i].value > 0)
             {
                 data.enemyAttackers[i].timer = 0;
-                if(playerData.healths[0].value > 0 && !entityManager.HasComponent<Damage>(playerData.entities[0]))
+                if(playerData.healths[0].value > 0 && !SurvivalShooterGame.entityManager.HasComponent<Damage>(playerData.entities[0]))
                 {
                     entityCommandBuffer.AddComponent(playerData.entities[0], new Damage() { value = enemyDamage});
                 }

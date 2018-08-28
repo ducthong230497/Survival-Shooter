@@ -112,7 +112,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 3ca7ca72a7464a64f8bf4cdcc013230d, type: 2}
 --- !u!1001 &46397054
 Prefab:
   m_ObjectHideFlags: 0
@@ -6242,6 +6242,48 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1681441924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1681441926}
+  - component: {fileID: 1681441925}
+  m_Layer: 0
+  m_Name: ZombearSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1681441925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681441924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ac9cf5d2bd44a42b3229b465fdff04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1922593682724126, guid: 8d155c26a41c6ea4895f39be77b351dc, type: 2}
+  spawnTime: 5
+--- !u!4 &1681441926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681441924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20, y: 0.5, z: 14.33}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1801428299
 GameObject:
   m_ObjectHideFlags: 0
@@ -6603,7 +6645,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4366032830637332, guid: 8d155c26a41c6ea4895f39be77b351dc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4366032830637332, guid: 8d155c26a41c6ea4895f39be77b351dc, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6628,6 +6670,20 @@ Prefab:
     - target: {fileID: 4366032830637332, guid: 8d155c26a41c6ea4895f39be77b351dc, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922593682724126, guid: 8d155c26a41c6ea4895f39be77b351dc, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54561755967027358, guid: 8d155c26a41c6ea4895f39be77b351dc,
+        type: 2}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54561755967027358, guid: 8d155c26a41c6ea4895f39be77b351dc,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d155c26a41c6ea4895f39be77b351dc, type: 2}

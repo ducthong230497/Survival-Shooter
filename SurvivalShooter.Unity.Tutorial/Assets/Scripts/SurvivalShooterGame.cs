@@ -6,9 +6,10 @@ using UnityEngine;
 public sealed class SurvivalShooterGame {
     public static SurvivalShooterSettings survivalShooterSettings;
     public static Camera mainCamera;
+    public static EntityManager entityManager;
     public static void NewGame()
     {
-        EntityManager entityManager = World.Active.GetOrCreateManager<EntityManager>();
+        entityManager = World.Active.GetOrCreateManager<EntityManager>();
 
         GameObject player = GameObject.FindGameObjectWithTag(GameString.player);
         Entity entity = player.GetComponent<GameObjectEntity>().Entity;
