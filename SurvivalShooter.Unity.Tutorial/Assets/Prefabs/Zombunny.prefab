@@ -58,10 +58,9 @@ GameObject:
   - component: {fileID: 135614148271454196}
   - component: {fileID: 82373445148627450}
   - component: {fileID: 195377777600696360}
-  - component: {fileID: 114694602972663892}
-  - component: {fileID: 114598928126457374}
+  - component: {fileID: 114578108747856174}
   - component: {fileID: 114945365890928044}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Zombunny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1819714994406638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.7345412, y: -0.00000013506735, z: -1.1330272}
+  m_LocalPosition: {x: 5.19, y: -0.00000013506735, z: -0.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4427097592933638}
@@ -237,7 +236,7 @@ Animator:
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114598928126457374
+--- !u!114 &114578108747856174
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,21 +244,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1819714994406638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a870995e3b1ee4f4f8d2dea4da1e57e2, type: 3}
+  m_Script: {fileID: 11500000, guid: c596fb9a320791847a5c3616c13d33ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114694602972663892
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1819714994406638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e9a2f95ebc321d47a54ac0ea36eea1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Timer: 0
+  timer: 0
 --- !u!114 &114945365890928044
 MonoBehaviour:
   m_ObjectHideFlags: 1

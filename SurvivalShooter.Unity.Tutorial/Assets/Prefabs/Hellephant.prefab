@@ -25,10 +25,9 @@ GameObject:
   - component: {fileID: 135559008078280596}
   - component: {fileID: 82617435384385884}
   - component: {fileID: 195722652413411366}
-  - component: {fileID: 114873138421838724}
-  - component: {fileID: 114827465744083646}
+  - component: {fileID: 114046235411193866}
   - component: {fileID: 114620096598056704}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Hellephant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,6 +364,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114046235411193866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340384384864124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c596fb9a320791847a5c3616c13d33ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
 --- !u!114 &114620096598056704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -376,29 +387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114827465744083646
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1340384384864124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a870995e3b1ee4f4f8d2dea4da1e57e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114873138421838724
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1340384384864124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e9a2f95ebc321d47a54ac0ea36eea1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Timer: 0
 --- !u!135 &135559008078280596
 SphereCollider:
   m_ObjectHideFlags: 1

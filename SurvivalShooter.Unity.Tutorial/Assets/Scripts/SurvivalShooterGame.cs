@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -6,47 +8,47 @@ using UnityEngine;
 public sealed class SurvivalShooterGame {
     public static SurvivalShooterSettings survivalShooterSettings;
     public static Camera mainCamera;
-    public static EntityManager entityManager;
+    public static EntityManager entityManager = World.Active.GetOrCreateManager<EntityManager>();
+
     public static void NewGame()
     {
-        entityManager = World.Active.GetOrCreateManager<EntityManager>();
-
         GameObject player = GameObject.FindGameObjectWithTag(GameString.player);
         Entity entity = player.GetComponent<GameObjectEntity>().Entity;
         entityManager.AddComponentData(entity, new PlayerInput() { Move = new Vector3(0, 0, 0) });
         entityManager.AddComponentData(entity, new Health() { value = survivalShooterSettings.playerStartHealth });
 
-        #region TEST ENEMY
-        GameObject enemy = GameObject.Find("TestEnemy");
-        Entity enemyEntity = enemy.GetComponent<GameObjectEntity>().Entity;
-        entityManager.AddComponentData(enemyEntity, new Enemy());
-        entityManager.AddComponentData(enemyEntity, new Health() { value = survivalShooterSettings.enemyStartHealth });
-
         mainCamera = Camera.main;
 
-        GameObject zombearEnemy = GameObject.Find("Zombear");
-        if(zombearEnemy == null)
-        {
-            Debug.Log("Zombear is null");
-            return;
-        }
-        else
-        {
-            Debug.Log("Zombear is not null");
-            Entity zombearEntity = zombearEnemy.GetComponent<GameObjectEntity>().Entity;
-            if (zombearEntity == null)
-            {
-                Debug.Log("Zombear Entity is null");
-            }
-            else
-            {
-                Debug.Log("Zombear Entity is not null");
-                entityManager.AddComponentData(zombearEntity, new Enemy());
-                entityManager.AddComponentData(zombearEntity, new Health() { value = survivalShooterSettings.enemyStartHealth });
-            }
-        }
-        #endregion
+        #region TEST ENEMY
+        //for (int i = 0; i < survivalShooterSettings.numberOfSmallEnemy; i++)
+        //{
+        //    GameObject zombear = UnityEngine.Object.Instantiate(survivalShooterSettings.Zombear);
+        //    Entity zombearEntity = zombear.GetComponent<GameObjectEntity>().Entity;
+        //    entityManager.AddComponentData(zombearEntity, new Enemy());
+        //    entityManager.AddComponentData(zombearEntity, new Health() { value = survivalShooterSettings.enemyStartHealth });
+        //    zombear.SetActive(false);
 
+        //    GameObject zombunny = UnityEngine.Object.Instantiate(survivalShooterSettings.Zombunny);
+        //    Entity zombunnyEntity = zombunny.GetComponent<GameObjectEntity>().Entity;
+        //    entityManager.AddComponentData(zombunnyEntity, new Enemy());
+        //    entityManager.AddComponentData(zombunnyEntity, new Health() { value = survivalShooterSettings.enemyStartHealth });
+        //    zombunny.SetActive(false);
+
+        //    zombearStack.Push(zombear);
+        //    zombunnyStack.Push(zombunny);
+        //}
+
+        //for (int i = 0; i < survivalShooterSettings.numberOfBigEnemy; i++)
+        //{
+        //    GameObject hellephant = UnityEngine.Object.Instantiate(survivalShooterSettings.Hellephant);
+        //    Entity hellephantEntity = hellephant.GetComponent<GameObjectEntity>().Entity;
+        //    entityManager.AddComponentData(hellephantEntity, new Enemy());
+        //    entityManager.AddComponentData(hellephantEntity, new Health() { value = survivalShooterSettings.enemyStartHealth });
+        //    hellephant.SetActive(false);
+
+        //    hellephantStack.Push(hellephant);
+        //}
+        #endregion
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]

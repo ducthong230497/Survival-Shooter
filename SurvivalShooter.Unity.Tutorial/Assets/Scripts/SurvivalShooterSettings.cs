@@ -14,9 +14,11 @@ public class SurvivalShooterSettings : MonoBehaviour {
     [Header("Camera Settings")]
     public int cameraSpeed;
     [Header("Enemy Settings")]
+    public GameObject Zombear;
+    public GameObject Zombunny;
+    public GameObject Hellephant;
     public int enemyStartHealth;
     public int enemyDamage;
     public int scoreKillEnemy;
     public float enemyAttackCoolDown;
-    public float enemySinkSpeed;
 }

@@ -19,14 +19,15 @@ public class PlayerShootingSystem : ComponentSystem
     [Inject] private Data data;
 
     float timer;
+    float shootCoolDown;
+    float shootEffectDisplayTime;
     LayerMask layerMask;
+
+
     protected override void OnUpdate()
     {
-        float shootCoolDown = SurvivalShooterGame.survivalShooterSettings.shootCoolDown;
-        float shootEffectDisplayTime = SurvivalShooterGame.survivalShooterSettings.shootEffectDisplayTime;
-
         timer += Time.deltaTime;
-        layerMask = LayerMask.GetMask(GameString.enviromentLayer);
+        
         for (int i = 0; i < data.Length; ++i)
         {
             if(Input.GetButton("Fire1") && timer >= shootCoolDown)
@@ -63,7 +64,7 @@ public class PlayerShootingSystem : ComponentSystem
         if(Physics.Raycast(shootRay, out shootHit, shootRange, layerMask))
         {
             GameObjectEntity objectEntity = shootHit.collider.gameObject.GetComponent<GameObjectEntity>();
-            Debug.Log("Hit: " + shootHit.collider.gameObject.name);
+            //Debug.Log("Hit: " + shootHit.collider.gameObject.name);
             GameUI.Instance.OnKillEnemy();
             if(objectEntity)
             {
@@ -81,5 +82,15 @@ public class PlayerShootingSystem : ComponentSystem
     {
         data.lineRenderers[i].enabled = false;
         data.lights[i].enabled = false;
+    }
+
+    protected override void OnStartRunning()
+    {
+        base.OnStartRunning();
+
+        layerMask = LayerMask.GetMask(GameString.enviromentLayer) | LayerMask.GetMask(GameString.enemyLayer);
+
+        shootCoolDown = SurvivalShooterGame.survivalShooterSettings.shootCoolDown;
+        shootEffectDisplayTime = SurvivalShooterGame.survivalShooterSettings.shootEffectDisplayTime;
     }
 }

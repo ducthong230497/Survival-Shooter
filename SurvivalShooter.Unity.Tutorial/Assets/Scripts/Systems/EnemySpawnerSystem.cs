@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawnerSystem : ComponentSystem {
 
@@ -14,42 +15,43 @@ public class EnemySpawnerSystem : ComponentSystem {
     public struct PlayerData
     {
         public readonly int Length;
-        public GameObjectArray gameObjects;
+        public EntityArray entities;
         public ComponentDataArray<PlayerInput> playerInputs;
         public ComponentDataArray<Health> healths;
+        
     }
 
     [Inject] Data data;
     [Inject] PlayerData playerData;
-    List<float> timer = new List<float>();
+    EntityCommandBuffer entityCommandBuffer;
     protected override void OnUpdate()
     {
         
         float dt = Time.deltaTime;
         for (int i = 0; i < data.Length; ++i)
         {
-            if (playerData.healths[i].value <= 0)
-                return;
-            if (timer.Count < i + 1)
-                timer.Add(0f);
+            //if (playerData.healths[0].value <= 0)
+            //    return;
 
-            timer[i] += dt;
+            data.enemySpawners[i].timer += dt;
 
             EnemySpawnHealper spawnHealper = data.enemySpawners[i];
 
-            if (timer[i] > data.enemySpawners[i].spawnTime)
+            if (data.enemySpawners[i].timer > data.enemySpawners[i].spawnTime)
             {
-                //timer[i] = 0;
-                //GameObject enemy = Object.Instantiate(spawnHealper.enemy, spawnHealper.transform.position, Quaternion.identity);
-                //Entity enemyEntity = enemy.GetComponent<GameObjectEntity>().Entity;
-                //SurvivalShooterGame.entityManager.AddComponentData(enemyEntity, new Enemy());
-                //SurvivalShooterGame.entityManager.AddComponentData(enemyEntity, new Health() { value = SurvivalShooterGame.survivalShooterSettings.enemyStartHealth});
+                data.enemySpawners[i].timer = 0;
 
-
+                GameObject go = data.enemySpawners[i].enemyStack.Pop();
+                go.SetActive(true);
+                go.transform.position = data.enemySpawners[i].transform.position;
+                go.GetComponent<NavMeshAgent>().Warp(go.transform.position);
             }
-
-            
-
         }
+    }
+
+    protected override void OnStartRunning()
+    {
+        base.OnStartRunning();
+        entityCommandBuffer = PostUpdateCommands;
     }
 }
