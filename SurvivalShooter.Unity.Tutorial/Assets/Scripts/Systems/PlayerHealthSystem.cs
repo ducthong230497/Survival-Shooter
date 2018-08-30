@@ -28,6 +28,7 @@ public class PlayerHealthSystem : ComponentSystem {
             int currentHealth = data.healths[i].value;
             int newHealth = currentHealth - dame;
 
+            GameUI.Instance.OnEnemyHitPlayer();
             data.healths[i] = new Health() { value = newHealth };
 
             GameUI.Instance.OnPlayerHitEnemy(newHealth);

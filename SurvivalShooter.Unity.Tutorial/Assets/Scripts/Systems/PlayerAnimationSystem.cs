@@ -18,9 +18,7 @@ public class PlayerAnimationSystem : ComponentSystem
     public static bool isDead;
 
     protected override void OnUpdate()
-    {
-        Debug.Log(isDead);
-        
+    { 
         EntityCommandBuffer entityCommandBuffer = PostUpdateCommands;
         for (int i = 0; i < data.Length; ++i)
         {

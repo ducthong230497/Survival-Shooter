@@ -8,6 +8,7 @@ public class GameUI : MonoBehaviour {
     private static GameUI instance;
     public static GameUI Instance { get=>instance; }
 
+
     [Header("Score")]
     [SerializeField] private Text scoreText;
     private int currentScore;
@@ -16,6 +17,13 @@ public class GameUI : MonoBehaviour {
     [Header("Health")]
     [SerializeField] private Slider healthSlider;
     private int playerStartHealth;
+
+    [Header("Damage Image")]
+    public Image damageImage;
+    public float flashSpeed = 5f;
+    public Color flashColor;
+
+    private bool damage;
 
     // Use this for initialization
     private void Start()
@@ -27,6 +35,18 @@ public class GameUI : MonoBehaviour {
 
         scorePerKill = SurvivalShooterGame.survivalShooterSettings.scoreKillEnemy;
         playerStartHealth = SurvivalShooterGame.survivalShooterSettings.playerStartHealth;
+    }
+
+    private void Update()
+    {
+        damageImage.color = damage ? flashColor : Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+
+        damage = false;
+    }
+
+    public void OnEnemyHitPlayer()
+    {
+        damage = true;
     }
 
     public void OnKillEnemy()
