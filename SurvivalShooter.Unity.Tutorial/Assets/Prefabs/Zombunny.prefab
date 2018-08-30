@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 82373445148627450}
   - component: {fileID: 195377777600696360}
   - component: {fileID: 114578108747856174}
+  - component: {fileID: 114138969308469198}
   - component: {fileID: 114945365890928044}
   m_Layer: 11
   m_Name: Zombunny
@@ -236,6 +237,20 @@ Animator:
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114138969308469198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819714994406638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dfdd55339e4ee40a5aa000f4353535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDisable: 0.5
+  enemySpawnHealper: {fileID: 114037990600208124, guid: 2851eaa9b5f56074994b4992659163fd,
+    type: 2}
 --- !u!114 &114578108747856174
 MonoBehaviour:
   m_ObjectHideFlags: 1

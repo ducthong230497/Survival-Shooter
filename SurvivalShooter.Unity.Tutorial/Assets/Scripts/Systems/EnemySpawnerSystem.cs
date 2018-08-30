@@ -40,15 +40,24 @@ public class EnemySpawnerSystem : ComponentSystem {
             {
                 data.enemySpawners[i].timer = 0;
 
+                if (data.enemySpawners[i].enemyStack.Count == 0) continue;
+
                 GameObject gameObject = data.enemySpawners[i].enemyStack.Pop();
                 gameObject.SetActive(true);
+
+                //Reset Properties
+                gameObject.GetComponent<CapsuleCollider>().isTrigger = false;
+
+                //Set Position
                 //gameObject.GetComponent<NavMeshAgent>().Warp(data.enemySpawners[i].transform.position);
                 gameObject.transform.position = data.enemySpawners[i].transform.position;
 
                 Entity entity = gameObject.GetComponent<GameObjectEntity>().Entity;
                 
                 entityCommandBuffer = PostUpdateCommands;
-                if (!SurvivalShooterGame.entityManager.HasComponent<Enemy>(entity))
+                
+                //Entity will automatically remove ComponentData, so i have to check and readd it, dunno why
+                if (!SurvivalShooterGame.entityManager.HasComponent<Enemy>(entity)) 
                 {
                     entityCommandBuffer.AddComponent(entity, new Enemy());
                 }

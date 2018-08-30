@@ -7,6 +7,8 @@ public class SurvivalShooterSettings : MonoBehaviour {
     public int playerStartHealth;
     public int playerMovementSpeed;
     public int raycastLength;
+    public int playerShootDamage;
+    public AudioClip playerDeadClip;
     [Header("Shoot Settings")]
     public int shootRange;
     public float shootCoolDown;
@@ -21,4 +23,7 @@ public class SurvivalShooterSettings : MonoBehaviour {
     public int enemyDamage;
     public int scoreKillEnemy;
     public float enemyAttackCoolDown;
+    public float enemySinkSpeed;
+    public AudioClip enemyHurtClip;
+    public AudioClip enemyDeadClip;
 }

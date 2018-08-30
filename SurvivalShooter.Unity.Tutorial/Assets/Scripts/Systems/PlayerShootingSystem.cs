@@ -22,12 +22,12 @@ public class PlayerShootingSystem : ComponentSystem
     float shootCoolDown;
     float shootEffectDisplayTime;
     LayerMask layerMask;
-
+    EntityCommandBuffer entityCommandBuffer;
 
     protected override void OnUpdate()
     {
         timer += Time.deltaTime;
-        
+        entityCommandBuffer = PostUpdateCommands;
         for (int i = 0; i < data.Length; ++i)
         {
             if(Input.GetButton("Fire1") && timer >= shootCoolDown)
@@ -63,11 +63,20 @@ public class PlayerShootingSystem : ComponentSystem
         RaycastHit shootHit;
         if(Physics.Raycast(shootRay, out shootHit, shootRange, layerMask))
         {
-            GameObjectEntity objectEntity = shootHit.collider.gameObject.GetComponent<GameObjectEntity>();
+            GameObjectEntity gameObjectEntity = shootHit.collider.gameObject.GetComponent<GameObjectEntity>();
+            
             //Debug.Log("Hit: " + shootHit.collider.gameObject.name);
-            GameUI.Instance.OnKillEnemy();
-            if(objectEntity)
+            //GameUI.Instance.OnKillEnemy();
+            if(gameObjectEntity)
             {
+                Entity entity = gameObjectEntity.Entity;
+                if (entity != null)
+                {
+                    if (!SurvivalShooterGame.entityManager.HasComponent<Damage>(entity))
+                    {
+                        entityCommandBuffer.AddComponent(entity, new Damage() { value = SurvivalShooterGame.survivalShooterSettings.playerShootDamage, hitPoint = shootHit.point });
+                    }
+                }
             }
 
             data.lineRenderers[i].SetPosition(1, shootHit.point);

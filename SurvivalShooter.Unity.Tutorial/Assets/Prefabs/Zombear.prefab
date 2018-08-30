@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 82107742128338844}
   - component: {fileID: 195735091745492910}
   - component: {fileID: 114927403144080126}
+  - component: {fileID: 114075419762170876}
   - component: {fileID: 114144669547376488}
   m_Layer: 11
   m_Name: Zombear
@@ -304,6 +305,20 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114075419762170876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922593682724126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dfdd55339e4ee40a5aa000f4353535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDisable: 0.5
+  enemySpawnHealper: {fileID: 114991126074741054, guid: 203beaf74ad9bb0449df7dc1ec986f31,
+    type: 2}
 --- !u!114 &114144669547376488
 MonoBehaviour:
   m_ObjectHideFlags: 1

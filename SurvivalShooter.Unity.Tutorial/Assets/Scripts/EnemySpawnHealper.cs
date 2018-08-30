@@ -19,6 +19,8 @@ public class EnemySpawnHealper : MonoBehaviour {
             Entity enemyEntity = enemyObject.GetComponent<GameObjectEntity>().Entity;
             SurvivalShooterGame.entityManager.AddComponentData(enemyEntity, new Enemy());
             SurvivalShooterGame.entityManager.AddComponentData(enemyEntity, new Health() { value = SurvivalShooterGame.survivalShooterSettings.enemyStartHealth });
+
+            enemyObject.GetComponent<EnemySinker>().enemySpawnHealper = this;
             enemyObject.SetActive(false);
 
             enemyStack.Push(enemyObject);

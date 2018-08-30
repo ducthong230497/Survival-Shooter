@@ -42,7 +42,6 @@ public class GameUI : MonoBehaviour {
 
     private IEnumerator UpdatePlayerHealth(int newHealth)
     {
-        Debug.Log($"new health: {newHealth}");
         float newHealthPercent = (float)newHealth / (float)playerStartHealth;
         float currentHealthPercent = healthSlider.value;
         float timer = 0;

@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 82617435384385884}
   - component: {fileID: 195722652413411366}
   - component: {fileID: 114046235411193866}
+  - component: {fileID: 114075045012577166}
   - component: {fileID: 114620096598056704}
   m_Layer: 11
   m_Name: Hellephant
@@ -376,6 +377,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+--- !u!114 &114075045012577166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340384384864124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dfdd55339e4ee40a5aa000f4353535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDisable: 0.5
+  enemySpawnHealper: {fileID: 114265145405767372, guid: 58d23a42a9406aa478934178eb93e8e6,
+    type: 2}
 --- !u!114 &114620096598056704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5353,7 +5368,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -5406,7 +5421,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:

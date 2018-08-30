@@ -12,6 +12,7 @@ public class PlayerHealthSystem : ComponentSystem {
         public readonly ComponentDataArray<PlayerInput> playerInputs;
         public ComponentDataArray<Health> healths;
         public ComponentDataArray<Damage> damages;
+        public ComponentArray<AudioSource> audioSources;
         private SubtractiveComponent<Dead> deads;
     }
 
@@ -33,7 +34,9 @@ public class PlayerHealthSystem : ComponentSystem {
 
             if(newHealth <= 0)
             {
-                entityCommandBuffer.AddComponent<Dead>(data.entities[0], new Dead());
+                data.audioSources[i].clip = SurvivalShooterGame.survivalShooterSettings.playerDeadClip;
+                data.audioSources[i].Play();
+                entityCommandBuffer.AddComponent(data.entities[0], new Dead() { value = 0});
             }
 
             entityCommandBuffer.RemoveComponent<Damage>(data.entities[i]);

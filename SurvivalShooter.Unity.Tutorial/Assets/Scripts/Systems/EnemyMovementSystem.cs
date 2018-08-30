@@ -8,9 +8,9 @@ public class EnemyMovementSystem : ComponentSystem {
     {
         public readonly int Length;
         public GameObjectArray gameObjects;
+        public EntityArray entities;
         public ComponentArray<NavMeshAgent> navMeshAgents;
         public readonly ComponentDataArray<Enemy> enemies;
-        public readonly ComponentDataArray<Health> healths;
     }
 
     public struct PlayerData
@@ -27,13 +27,13 @@ public class EnemyMovementSystem : ComponentSystem {
     {
         for (int i = 0; i < data.Length; ++i)
         {
-            if (data.healths[i].value > 0)
+            if (!SurvivalShooterGame.entityManager.HasComponent<Dead>(data.entities[i]))
             {
                 data.navMeshAgents[i].SetDestination(playerData.gameObjects[0].transform.position);
             }
             else
             {
-                data.navMeshAgents[i].enabled = false;
+                data.navMeshAgents[i].isStopped = true;
             }
         }
     }

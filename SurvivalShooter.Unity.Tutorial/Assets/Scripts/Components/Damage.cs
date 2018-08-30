@@ -5,4 +5,5 @@ using UnityEngine;
 
 public struct Damage : IComponentData {
     public int value;
+    public Vector3 hitPoint;
 }
