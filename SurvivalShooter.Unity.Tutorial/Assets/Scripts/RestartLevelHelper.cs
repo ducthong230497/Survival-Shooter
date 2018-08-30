@@ -5,6 +5,7 @@ public class RestartLevelHelper : MonoBehaviour
 {
     public void RestartLevel()
     {
-        SceneManager.LoadScene(0);
+        PlayerAnimationSystem.isDead = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

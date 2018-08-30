@@ -15,13 +15,16 @@ public class PlayerAnimationSystem : ComponentSystem
     }
 
     [Inject] private Data data;
-    bool isDead;
+    public static bool isDead;
+
     protected override void OnUpdate()
     {
+        Debug.Log(isDead);
+        
         EntityCommandBuffer entityCommandBuffer = PostUpdateCommands;
         for (int i = 0; i < data.Length; ++i)
         {
-            if(!SurvivalShooterGame.entityManager.HasComponent<Dead>(data.entities[i]))
+            if (!SurvivalShooterGame.entityManager.HasComponent<Dead>(data.entities[i]))
             {
                 Vector3 move = data.playerInputs[i].Move;
                 data.animators[i].SetBool(GameString.isWalking, move.x != 0 || move.z != 0);
@@ -32,11 +35,5 @@ public class PlayerAnimationSystem : ComponentSystem
                 isDead = true;
             }
         }
-    }
-
-    protected override void OnStartRunning()
-    {
-        base.OnStartRunning();
-        isDead = false;
     }
 }

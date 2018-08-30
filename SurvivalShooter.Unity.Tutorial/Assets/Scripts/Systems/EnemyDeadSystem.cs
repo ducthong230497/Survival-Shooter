@@ -32,13 +32,4 @@ public class EnemyDeadSystem : ComponentSystem {
 
         }
     }
-
-    protected override void OnStopRunning()
-    {
-        base.OnStopRunning();
-        for (int i = 0; i < data.Length; ++i)
-        {
-            data.animators[i].ResetTrigger("Dead");
-        }
-    }
 }
