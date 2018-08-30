@@ -15,7 +15,6 @@ public class EnemySpawnerSystem : ComponentSystem {
     public struct PlayerData
     {
         public readonly int Length;
-        public EntityArray entities;
         public ComponentDataArray<PlayerInput> playerInputs;
         public ComponentDataArray<Health> healths;
         
@@ -41,17 +40,23 @@ public class EnemySpawnerSystem : ComponentSystem {
             {
                 data.enemySpawners[i].timer = 0;
 
-                GameObject go = data.enemySpawners[i].enemyStack.Pop();
-                go.SetActive(true);
-                go.transform.position = data.enemySpawners[i].transform.position;
-                go.GetComponent<NavMeshAgent>().Warp(go.transform.position);
+                GameObject gameObject = data.enemySpawners[i].enemyStack.Pop();
+                gameObject.SetActive(true);
+                //gameObject.GetComponent<NavMeshAgent>().Warp(data.enemySpawners[i].transform.position);
+                gameObject.transform.position = data.enemySpawners[i].transform.position;
+
+                Entity entity = gameObject.GetComponent<GameObjectEntity>().Entity;
+                
+                entityCommandBuffer = PostUpdateCommands;
+                if (!SurvivalShooterGame.entityManager.HasComponent<Enemy>(entity))
+                {
+                    entityCommandBuffer.AddComponent(entity, new Enemy());
+                }
+                if (!SurvivalShooterGame.entityManager.HasComponent<Health>(entity))
+                {
+                    entityCommandBuffer.AddComponent(entity, new Health() { value = SurvivalShooterGame.survivalShooterSettings.enemyStartHealth });
+                }
             }
         }
-    }
-
-    protected override void OnStartRunning()
-    {
-        base.OnStartRunning();
-        entityCommandBuffer = PostUpdateCommands;
     }
 }

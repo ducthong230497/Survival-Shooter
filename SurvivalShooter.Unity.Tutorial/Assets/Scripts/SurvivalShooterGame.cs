@@ -9,6 +9,7 @@ public sealed class SurvivalShooterGame {
     public static SurvivalShooterSettings survivalShooterSettings;
     public static Camera mainCamera;
     public static EntityManager entityManager = World.Active.GetOrCreateManager<EntityManager>();
+    public static EntityArchetype enemyArchetype;
 
     public static void NewGame()
     {
@@ -19,6 +20,12 @@ public sealed class SurvivalShooterGame {
 
         mainCamera = Camera.main;
 
+        enemyArchetype = entityManager.CreateArchetype(typeof(Enemy), typeof(Health));
+        //GameObject zombear = UnityEngine.Object.Instantiate(survivalShooterSettings.Zombear);
+        //Entity zombearEntity = zombear.GetComponent<GameObjectEntity>().Entity;
+        //entityManager.AddComponentData(zombearEntity, new Enemy());
+        //entityManager.AddComponentData(zombearEntity, new Health() { value = survivalShooterSettings.enemyStartHealth });
+        //zombear.SetActive(false);
         #region TEST ENEMY
         //for (int i = 0; i < survivalShooterSettings.numberOfSmallEnemy; i++)
         //{
