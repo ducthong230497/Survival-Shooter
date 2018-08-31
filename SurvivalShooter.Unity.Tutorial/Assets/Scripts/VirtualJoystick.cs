@@ -14,7 +14,16 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     [SerializeField] private Image imageJoystick;
     [SerializeField] private float joystickLerpTime;
     [SerializeField] private AnchorPosition anchorPosition;
-    private Vector3 newPosition;
+
+    /// <summary>
+    /// value from -1 to 1
+    /// </summary>
+    public Vector3 value;
+
+    private void Start()
+    {
+        imageBackground = GetComponent<Image>();
+    }
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -23,10 +32,10 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         {
             touchPosition.x = touchPosition.x / imageBackground.rectTransform.sizeDelta.x;
             touchPosition.y = touchPosition.y / imageBackground.rectTransform.sizeDelta.y;
-            newPosition = anchorPosition == AnchorPosition.LeftDown? new Vector3(touchPosition.x * 2 - 1, 0, touchPosition.y * 2 - 1) : new Vector3(touchPosition.x * 2 + 1, 0, touchPosition.y * 2 - 1);
-            newPosition = newPosition.sqrMagnitude > 1 ? newPosition.normalized : newPosition;
-            Debug.Log(newPosition);
-            imageJoystick.rectTransform.anchoredPosition = new Vector2(newPosition.x * (imageBackground.rectTransform.sizeDelta.x / 2), newPosition.z * (imageBackground.rectTransform.sizeDelta.y / 2));
+            value = anchorPosition == AnchorPosition.LeftDown? new Vector3(touchPosition.x * 2 - 1, 0, touchPosition.y * 2 - 1) : new Vector3(touchPosition.x * 2 + 1, 0, touchPosition.y * 2 - 1);
+            value = value.sqrMagnitude > 1 ? value.normalized : value;
+            
+            imageJoystick.rectTransform.anchoredPosition = new Vector2(value.x * (imageBackground.rectTransform.sizeDelta.x / 2), value.z * (imageBackground.rectTransform.sizeDelta.y / 2));
         }
     }
 
@@ -37,16 +46,11 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public void OnPointerUp(PointerEventData eventData)
     {
         StartCoroutine(JoystickReturnToCenter());
+        value = Vector3.zero;
     }
-
-    // Use this for initialization
-    void Start () {
-        imageBackground = GetComponent<Image>();
-	}
 
     IEnumerator JoystickReturnToCenter()
     {
-        Debug.Log("Nani?");
         float timer = 0;
         while(timer < joystickLerpTime)
         {

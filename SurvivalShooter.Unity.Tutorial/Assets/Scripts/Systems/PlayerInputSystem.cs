@@ -8,6 +8,7 @@ public class PlayerInputSystem : ComponentSystem
     {
         public readonly int Length;
         public ComponentDataArray<PlayerInput> playerInputs;
+        public ComponentArray<JoystickController> joystickControllers;
         public SubtractiveComponent<Dead> deads;
     }
 
@@ -19,7 +20,7 @@ public class PlayerInputSystem : ComponentSystem
         {
             PlayerInput newInput = new PlayerInput
             {
-                Move = new float3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"))
+                Move = new float3(data.joystickControllers[i].moveJoystick.value.x, 0, data.joystickControllers[i].moveJoystick.value.z)
             };
             data.playerInputs[i] = newInput;
         }
