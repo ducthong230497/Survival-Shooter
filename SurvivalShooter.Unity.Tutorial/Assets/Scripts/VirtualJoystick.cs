@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler {
     private enum AnchorPosition
@@ -19,6 +20,10 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     /// value from -1 to 1
     /// </summary>
     public Vector3 value;
+    public Action OnJoystickClicked = delegate { }; 
+    public Action OnJoystickReleased = delegate { };
+
+    public bool isClicked;
 
     private void Start()
     {
@@ -41,11 +46,15 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        OnJoystickClicked();
+        isClicked = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        isClicked = false;
         StartCoroutine(JoystickReturnToCenter());
+        OnJoystickReleased();
         value = Vector3.zero;
     }
 

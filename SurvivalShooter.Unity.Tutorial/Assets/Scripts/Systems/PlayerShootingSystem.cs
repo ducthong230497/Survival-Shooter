@@ -9,10 +9,12 @@ public class PlayerShootingSystem : ComponentSystem
     {
         public readonly int Length;
         public GameObjectArray gameObjects;
+        public EntityArray entities;
         public ComponentArray<ParticleSystem> particleSystems;
         public ComponentArray<LineRenderer> lineRenderers;
         public ComponentArray<AudioSource> audioSources;
         public ComponentArray<Light> lights;
+        public ComponentDataArray<Shoot> shoots;
         private SubtractiveComponent<Dead> deads;
     }
 
@@ -30,7 +32,8 @@ public class PlayerShootingSystem : ComponentSystem
         entityCommandBuffer = PostUpdateCommands;
         for (int i = 0; i < data.Length; ++i)
         {
-            if(Input.GetButton("Fire1") && timer >= shootCoolDown)
+            //Debug.Log($"name: {data.gameObjects[i].name}, has shoot: {SurvivalShooterGame.entityManager.HasComponent<Shoot>(data.entities[i])}");
+            if (data.shoots[i].value == 1 && timer >= shootCoolDown)
             {
                 Shoot(data, i);
             }

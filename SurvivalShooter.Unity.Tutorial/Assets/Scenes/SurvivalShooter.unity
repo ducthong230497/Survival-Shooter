@@ -166,6 +166,7 @@ MonoBehaviour:
   joystickLerpTime: 0.3
   anchorPosition: 0
   value: {x: 0, y: 0, z: 0}
+  isClicked: 0
 --- !u!114 &22073989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,6 +797,7 @@ GameObject:
   - component: {fileID: 398291946}
   - component: {fileID: 398291945}
   - component: {fileID: 398291944}
+  - component: {fileID: 398291943}
   m_Layer: 0
   m_Name: GunBarrelEnd
   m_TagString: Untagged
@@ -817,6 +819,19 @@ Transform:
   m_Father: {fileID: 1801428305}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &398291943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 398291941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41523ca7010bfce46bca72f13e26f2ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveJoystick: {fileID: 22073988}
+  rotateJoystick: {fileID: 668175787}
 --- !u!114 &398291944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6052,6 +6067,7 @@ MonoBehaviour:
   joystickLerpTime: 0.3
   anchorPosition: 1
   value: {x: 0, y: 0, z: 0}
+  isClicked: 0
 --- !u!114 &668175788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7017,8 +7033,8 @@ GameObject:
   - component: {fileID: 1801428302}
   - component: {fileID: 1801428301}
   - component: {fileID: 1801428306}
-  - component: {fileID: 1801428300}
   - component: {fileID: 1801428307}
+  - component: {fileID: 1801428300}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player

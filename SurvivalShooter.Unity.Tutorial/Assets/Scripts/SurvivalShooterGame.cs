@@ -17,7 +17,8 @@ public sealed class SurvivalShooterGame {
         Entity entity = player.GetComponent<GameObjectEntity>().Entity;
         entityManager.AddComponentData(entity, new PlayerInput() { Move = new Vector3(0, 0, 0) });
         entityManager.AddComponentData(entity, new Health() { value = survivalShooterSettings.playerStartHealth });
-
+        entityManager.AddComponentData(player.transform.GetChild(1).GetComponent<GameObjectEntity>().Entity, new Shoot() { value = 0 });
+        
         mainCamera = Camera.main;
 
         enemyArchetype = entityManager.CreateArchetype(typeof(Enemy), typeof(Health));
