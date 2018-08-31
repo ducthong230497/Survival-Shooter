@@ -317,8 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDisable: 0.5
-  enemySpawnHealper: {fileID: 114991126074741054, guid: 203beaf74ad9bb0449df7dc1ec986f31,
-    type: 2}
+  enemySpawnHealper: {fileID: 0}
 --- !u!114 &114144669547376488
 MonoBehaviour:
   m_ObjectHideFlags: 1

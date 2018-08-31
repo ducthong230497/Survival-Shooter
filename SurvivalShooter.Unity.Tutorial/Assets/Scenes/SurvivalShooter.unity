@@ -112,7 +112,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3ca7ca72a7464a64f8bf4cdcc013230d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 566d637dbff11584fa5c3ce86ffb4beb, type: 2}
 --- !u!1001 &40599132
 Prefab:
   m_ObjectHideFlags: 0
@@ -5722,7 +5722,7 @@ Camera:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -5736,9 +5736,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 40
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 5.25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5761,7 +5761,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: -0.37352395, y: 0.0047281687, z: -0.0019036301, w: -0.9276066}
-  m_LocalPosition: {x: -0.002719921, y: 7.0425334, z: -8.551363}
+  m_LocalPosition: {x: -0.002719921, y: 8.3, z: -8.551363}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
