@@ -1,7 +1,5 @@
 # SurvivalShooter.Unity.Tutorial
 This project was built with Unity new system “Entity Component System” or ECS for short. Through this game I have had an overview about ECS, how to build a game using ECS hybrid on android OS.
--	Object pool (for optimization)
--	Singleton design pattern.
 
 ### Knowledge I have learned in this project
 * Object Pooling
