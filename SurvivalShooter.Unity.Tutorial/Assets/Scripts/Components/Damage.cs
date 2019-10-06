@@ -7,3 +7,4 @@ public struct Damage : IComponentData {
     public int value;
     public Vector3 hitPoint;
 }
+public class DamageComponent : ComponentDataWrapper<Damage> { }
